@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+  mysql:
+    container_name: cardmaker_mysql
+    image: mysql:8.0
+    restart: on-failure
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+
+  php:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    container_name: cardmaker_php
+    restart: on-failure
+    user: ${LOCAL_USER}
+
+  nginx:
+    container_name: cardmaker_ngnix
+    image: nginx:1.15.3-alpine
+    restart: on-failure
+    depends_on:
+      - php
+
+  adminer:
+    container_name: cardmaker_adminer
+    image: adminer
+    restart: on-failure
+
