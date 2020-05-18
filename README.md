@@ -1,5 +1,9 @@
 #Cardmaker Docker
 
+##Requirements:
+
+To properly set up this application You will need cards templates and fonts. Those files as not owned by me are not in repository.
+
 ##Setting Up
 
 Run:
@@ -7,6 +11,9 @@ Run:
 ```
 ./build.sh
 ```
+
+and simply extract resources folder in:
+`./apps/cardmaker/var/cardmaker/resources`
 
 ##PHP container shell
 
